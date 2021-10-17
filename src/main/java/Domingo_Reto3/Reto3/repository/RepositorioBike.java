@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Domingo_Reto3.Reto3;
+package Domingo_Reto3.Reto3.repository;
 
+import Domingo_Reto3.Reto3.modelo.Bike;
+import Domingo_Reto3.Reto3.Interface.InterfaceBike;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;

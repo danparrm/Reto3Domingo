@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Domingo_Reto3.Reto3;
+package Domingo_Reto3.Reto3.controller;
 
+import Domingo_Reto3.Reto3.modelo.Categoria;
+import Domingo_Reto3.Reto3.service.ServiciosCategoria;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,34 +27,37 @@ import org.springframework.web.bind.annotation.RestController;
  * @author USUARIO
  */
 @RestController
-@RequestMapping("/api/Reservation")
+@RequestMapping("/api/Category")
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 
-public class ControladorReservaciones {
+public class ControladorCategoria {
       @Autowired
-    private ServiciosReservaciones servicio;
+    private ServiciosCategoria servicio;
     @GetMapping("/all")
-    public List<Reservaciones> getReservations(){
+    public List<Categoria> getCategoria(){
         return servicio.getAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Reservaciones> getReservation(@PathVariable("id") int reservationId) {
-        return servicio.getReservation(reservationId);
+    public Optional<Categoria> getCategoria(@PathVariable("id") int categoriaId) {
+        return servicio.getCategoria(categoriaId);
     }
+
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Reservaciones save(@RequestBody Reservaciones reservation) {
-        return servicio.save(reservation);
+    public Categoria save(@RequestBody Categoria categoria) {
+        return servicio.save(categoria);
     }
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Reservaciones update(@RequestBody Reservaciones reservation) {
-        return servicio.update(reservation);
+    public Categoria update(@RequestBody Categoria categoria) {
+        return servicio.update(categoria);
     }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") int reservationId) {
-        return servicio.deleteReservation(reservationId);
+    public boolean delete(@PathVariable("id") int categoriaId) {
+        return servicio.deletecategoria(categoriaId);
     }
+    
 }

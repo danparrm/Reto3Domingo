@@ -1,10 +1,11 @@
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Domingo_Reto3.Reto3;
+package Domingo_Reto3.Reto3.controller;
 
+import Domingo_Reto3.Reto3.modelo.Reservaciones;
+import Domingo_Reto3.Reto3.service.ServiciosReservaciones;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,37 +27,34 @@ import org.springframework.web.bind.annotation.RestController;
  * @author USUARIO
  */
 @RestController
-@RequestMapping("/api/Message")
+@RequestMapping("/api/Reservation")
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 
-public class ControladorMensaje {
-     @Autowired
-    private ServiciosMensaje servico;
+public class ControladorReservaciones {
+      @Autowired
+    private ServiciosReservaciones servicio;
     @GetMapping("/all")
-    public List<Mensaje> getMessages(){
-        return servico.getAll();
+    public List<Reservaciones> getReservations(){
+        return servicio.getAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Mensaje> getMessage(@PathVariable("id") int messageId) {
-        return servico.getMessage(messageId);
+    public Optional<Reservaciones> getReservation(@PathVariable("id") int reservationId) {
+        return servicio.getReservation(reservationId);
     }
-
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Mensaje save(@RequestBody Mensaje message) {
-        return servico.save(message);
+    public Reservaciones save(@RequestBody Reservaciones reservation) {
+        return servicio.save(reservation);
     }
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Mensaje update(@RequestBody Mensaje message) {
-        return servico.update(message);
+    public Reservaciones update(@RequestBody Reservaciones reservation) {
+        return servicio.update(reservation);
     }
-
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") int messageId) {
-        return servico.deleteMessage(messageId);
+    public boolean delete(@PathVariable("id") int reservationId) {
+        return servicio.deleteReservation(reservationId);
     }
-    
 }

@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Domingo_Reto3.Reto3;
+package Domingo_Reto3.Reto3.controller;
 
+import Domingo_Reto3.Reto3.modelo.Cliente;
+import Domingo_Reto3.Reto3.service.ServiciosCliente;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,36 +27,37 @@ import org.springframework.web.bind.annotation.RestController;
  * @author USUARIO
  */
 @RestController
-@RequestMapping("/api/Bike")
+@RequestMapping("/api/Client")
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 
-public class ControladorBike {
+public class ControladorCliente {
      @Autowired
-    private ServiciosBike servicio;
+    private ServiciosCliente servicio;
+  
     @GetMapping("/all")
-    public List<Bike> getBikes(){
+    public List<Cliente> getClients(){
         return servicio.getAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Bike> getBike(@PathVariable("id") int bikeId) {
-        return servicio.getBike(bikeId);
+    public Optional<Cliente> getClient(@PathVariable("id") int clientId) {
+        return servicio.getClient(clientId);
     }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Bike save(@RequestBody Bike bike) {
-        return servicio.save(bike);
+    public Cliente save(@RequestBody Cliente client) {
+        return servicio.save(client);
     }
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Bike update(@RequestBody Bike bike) {
-        return servicio.update(bike);
+    public Cliente update(@RequestBody Cliente client) {
+        return servicio.update(client);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") int bikeId) {
-        return servicio.deleteBike(bikeId);
-    } 
+    public boolean delete(@PathVariable("id") int clientId) {
+        return servicio.deleteClient(clientId);
+    }
 }
